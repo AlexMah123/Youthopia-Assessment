@@ -18,6 +18,8 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        if (TimeManager.isTimePaused) return;
+
         Movement = moveAction.ReadValue<Vector2>();
     }
 
