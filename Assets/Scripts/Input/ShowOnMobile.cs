@@ -7,8 +7,12 @@ public class ShowOnMobile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
 #if !UNITY_EDITOR
-        gameObject.SetActive(Application.isMobilePlatform);
+        bool isOnMobile = Application.isMobilePlatform;
+        bool isOnWebGLMobile = isOnMobile && Application.platform == RuntimePlatform.WebGLPlayer;
+        
+        gameObject.SetActive(isOnMobile || isOnWebGLMobile);
 #endif
     }
 }
