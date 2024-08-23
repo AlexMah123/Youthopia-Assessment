@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovementComponent : MonoBehaviour
+[RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
+public class NPCMovement : MonoBehaviour
 {
     private const string isMoving = "isMoving";
 
@@ -21,15 +22,14 @@ public class CharacterMovementComponent : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
-        ProcessInput();
-        HandleMovement();
+        
     }
 
-    void ProcessInput()
+    private void ProcessMovement()
     {
-        characterMovement.Set(InputManager.Movement.x, InputManager.Movement.y);
+
     }
 
     private void HandleMovement()
@@ -46,6 +46,4 @@ public class CharacterMovementComponent : MonoBehaviour
             animator.SetBool(isMoving, false);
         }
     }
-
-    
 }
