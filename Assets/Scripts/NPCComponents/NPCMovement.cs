@@ -54,7 +54,7 @@ public class NPCMovement : MonoBehaviour
         {
             BindOnAbleToInteractEvent();
         }
-
+ 
         StartCoroutine(ProcessMovement());
     }
 
@@ -65,9 +65,8 @@ public class NPCMovement : MonoBehaviour
 
     private void HandleOnAbleToInteract(GameObject interactor)
     {
-        Debug.Log("Here");
-
         rb.velocity = Vector2.zero;
+        characterMovement = Vector2.zero;
 
         Vector2 direction = (interactor.transform.position - transform.position).normalized;
 
