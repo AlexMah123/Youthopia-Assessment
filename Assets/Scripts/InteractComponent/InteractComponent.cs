@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void ShowInteractPrompt(GameObject interactUIPrompt);
+    void ShowInteractPrompt(GameObject interactor, GameObject interactUIPrompt);
 
     void Interact();
 }
@@ -21,7 +21,6 @@ public class InteractComponent : MonoBehaviour
 
     private GameObject closestInteractableObj = null;
     private List<GameObject> interactables = new();
-
 
     private void OnEnable()
     {
@@ -45,11 +44,14 @@ public class InteractComponent : MonoBehaviour
     {
         if(closestInteractableObj)
         {
-            closestInteractableObj.GetComponent<IInteractable>().ShowInteractPrompt(interactUIPrompt);
+            closestInteractableObj.GetComponent<IInteractable>().ShowInteractPrompt(gameObject, interactUIPrompt);
         }
         else
         {
-            interactUIPrompt.gameObject.SetActive(false);
+            if (interactUIPrompt.activeSelf)
+            {
+                interactUIPrompt.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -63,8 +65,6 @@ public class InteractComponent : MonoBehaviour
 
     private void SetClosestInteractable()
     {
-        Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-
         //early return
         if (interactables.Count <= 0)
         {
@@ -86,10 +86,8 @@ public class InteractComponent : MonoBehaviour
             //if hit an obstacle, skip
             if (obstacleHit.collider != null) continue;
 
-            //get distance between interactable
             float distance = Vector2.Distance(transform.position, interactableObj.transform.position);
 
-            //check if 
             if (distance < closestDistance)
             {
                 closestDistance = distance;

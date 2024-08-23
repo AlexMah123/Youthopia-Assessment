@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3321291825687019572}
   - component: {fileID: 4396193646864609303}
   - component: {fileID: 6095472768195613407}
+  - component: {fileID: 1954858030320777487}
   m_Layer: 7
   m_Name: NPC
   m_TagString: Untagged
@@ -211,3 +212,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eaff34862d405549a7817d5eaa3db61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTimeAtPath: 4
+  moveSpeed: 2
+  paths:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &1954858030320777487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124759465838331752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba855ed3e111c4c9fc6039d4ec2447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - speakerName: John
+    dialogueLines: Hi, Whatsup?
+  - speakerName: John
+    dialogueLines: Im from Youthopia. Where are from?
+  - speakerName: John
+    dialogueLines: I wonder if I will ever be cool....
+  - speakerName: John
+    dialogueLines: English or Spanish
+  - speakerName: John
+    dialogueLines: We're no strangers to lovee....
