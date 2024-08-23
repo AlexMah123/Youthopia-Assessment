@@ -337,6 +337,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &814775656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3801182049251261963, guid: 972b567580eca5747b3ca210d31a492c, type: 3}
+  m_PrefabInstance: {fileID: 2839392974523595968}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f92e2f458a324448be23aa683a789c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &954174147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1117,10 +1128,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 115898527}
     m_Modifications:
+    - target: {fileID: 2384071661446611766, guid: b8e81659cebd4fa42a294a599cf80a71, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 814775656}
+    - target: {fileID: 3075467051076121059, guid: b8e81659cebd4fa42a294a599cf80a71, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 814775656}
     - target: {fileID: 6372848361134955897, guid: b8e81659cebd4fa42a294a599cf80a71, type: 3}
       propertyPath: m_Name
       value: SettingsPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6405143128341231918, guid: b8e81659cebd4fa42a294a599cf80a71, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 814775656}
     - target: {fileID: 8523964252179726912, guid: b8e81659cebd4fa42a294a599cf80a71, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

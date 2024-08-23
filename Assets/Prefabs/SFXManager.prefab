@@ -53,6 +53,9 @@ MonoBehaviour:
   - groupID: SceneTransition
     clips:
     - {fileID: 8300000, guid: ce42f59ec60ea844f8bfdfe71fc70166, type: 3}
+  - groupID: DialogueStart
+    clips:
+    - {fileID: 8300000, guid: 534a4ce249fb80e4bb9e6cac1a6999f3, type: 3}
 --- !u!114 &5274691645278223651
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,20 +16,58 @@ public class DialogueComponent : MonoBehaviour
 
     public event Action<Dialogue> OnStartDialogue;
 
+    //flag
+    private bool isOnInteractBinded = false;
+
     private void OnEnable()
     {
-        GetComponent<InteractableComponent>().OnInteract += HandleOnInteract;
+        if(!isOnInteractBinded)
+        {
+            BindOnInteractEvent();
+        }
     }
 
     private void OnDisable()
     {
-        GetComponent<InteractableComponent>().OnInteract -= HandleOnInteract;
+        if(isOnInteractBinded)
+        {
+            UnbindOnInteractEvent();
+        }
+    }
+
+    private void Start()
+    {
+        if (!isOnInteractBinded)
+        {
+            BindOnInteractEvent();
+        }
     }
 
     void HandleOnInteract()
     {
+        SFXManager.Instance.PlaySoundFXClip("DialogueStart", transform);
         var randomDialogeIndex = UnityEngine.Random.Range(0, dialogues.Count);
 
         OnStartDialogue?.Invoke(dialogues[randomDialogeIndex]);
+    }
+
+    void BindOnInteractEvent()
+    {
+        var interactbleComponent = GetComponent<InteractableComponent>();
+        if (interactbleComponent)
+        {
+            interactbleComponent.OnInteract += HandleOnInteract;
+            isOnInteractBinded = true;
+        }
+    }
+
+    void UnbindOnInteractEvent()
+    {
+        var interactbleComponent = GetComponent<InteractableComponent>();
+        if (interactbleComponent)
+        {
+            interactbleComponent.OnInteract -= HandleOnInteract;
+            isOnInteractBinded = false;
+        }
     }
 }

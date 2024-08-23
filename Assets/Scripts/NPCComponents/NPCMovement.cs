@@ -23,15 +23,23 @@ public class NPCMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    //flag
+    private bool isOnAbleToInteractBinded = false;
 
     private void OnEnable()
     {
-        GetComponent<InteractableComponent>().OnAbleToInteract += HandleOnAbleToInteract;
+        if(!isOnAbleToInteractBinded)
+        {
+            BindOnAbleToInteractEvent();
+        }
     }
 
     private void OnDisable()
     {
-        GetComponent<InteractableComponent>().OnAbleToInteract -= HandleOnAbleToInteract;
+        if(isOnAbleToInteractBinded)
+        {
+            UnbindOnAbleToInteractEvent();
+        }
     }
 
     private void Awake()
@@ -42,6 +50,11 @@ public class NPCMovement : MonoBehaviour
 
     private void Start()
     {
+        if (!isOnAbleToInteractBinded)
+        {
+            BindOnAbleToInteractEvent();
+        }
+
         StartCoroutine(ProcessMovement());
     }
 
@@ -52,6 +65,8 @@ public class NPCMovement : MonoBehaviour
 
     private void HandleOnAbleToInteract(GameObject interactor)
     {
+        Debug.Log("Here");
+
         rb.velocity = Vector2.zero;
 
         Vector2 direction = (interactor.transform.position - transform.position).normalized;
@@ -103,6 +118,26 @@ public class NPCMovement : MonoBehaviour
         else
         {
             animator.SetBool(isMoving, false);
+        }
+    }
+
+    void BindOnAbleToInteractEvent()
+    {
+        var interactableComponent = GetComponent<InteractableComponent>();
+        if(interactableComponent)
+        {
+            interactableComponent.OnAbleToInteract += HandleOnAbleToInteract;
+            isOnAbleToInteractBinded = true;
+        }
+    }
+
+    void UnbindOnAbleToInteractEvent()
+    {
+        var interactableComponent = GetComponent<InteractableComponent>();
+        if (interactableComponent)
+        {
+            interactableComponent.OnAbleToInteract -= HandleOnAbleToInteract;
+            isOnAbleToInteractBinded = false;
         }
     }
 }

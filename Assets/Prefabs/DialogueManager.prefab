@@ -47,4 +47,4 @@ MonoBehaviour:
   dialogueBox: {fileID: 0}
   speakerText: {fileID: 0}
   dialogueText: {fileID: 0}
-  dialogueDisplayTime: 3
+  dialogueDisplayTime: 2
